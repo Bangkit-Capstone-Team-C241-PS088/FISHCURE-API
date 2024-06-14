@@ -1,0 +1,15 @@
+runtime: nodejs18
+service: default
+
+env_variables:
+  DB_HOST: localhost
+  DB_USER: root
+  DB_PASSWORD:
+  DB_NAME: user_db
+
+beta_settings:
+  cloud_sql_instances:
+
+handlers:
+  - url: /.*
+    script: auto
