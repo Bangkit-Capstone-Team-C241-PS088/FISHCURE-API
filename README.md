@@ -1,6 +1,7 @@
 # FISHCURE-API
 
 Combination of all Fishcure API before
+- [Register](tab=readme-ov-file#register)
 
 # Guide menggunakan API FISHCURE 🐟🐠🐡🦈:
 
