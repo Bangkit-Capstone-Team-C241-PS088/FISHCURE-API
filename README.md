@@ -2,16 +2,16 @@
 
 Combination of all Fishcure API before
 - [Register](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#register)
-- [Login](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#login)
-- [Mengirim kode OTP ke email user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#mengirim-kode-otp-ke-email-user)
-- [Melakukan autentikasi kode OTP user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#melakukan-autentikasi-kode-otp-user)
-- [Ganti password user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#ganti-password-user)
-- [Solution](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#solution)
-- [Save History](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#save-history)
-- [Get History](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#get-history)
-- [Get All History](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#get-all-history)
-- [Get Article](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#get-article)
-- [Get All Article](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#get-all-article)
+- [Login](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#login)
+- [Mengirim kode OTP ke email user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#mengirim-kode-otp-ke-email-user)
+- [Melakukan autentikasi kode OTP user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#melakukan-autentikasi-kode-otp-user)
+- [Ganti password user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#ganti-password-user)
+- [Solution](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#solution)
+- [Save History](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#save-history)
+- [Get History](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#get-history)
+- [Get All History](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#get-all-history)
+- [Get Article](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#get-article)
+- [Get All Article](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#get-all-article)
 
 # Guide menggunakan API FISHCURE 🐟🐠🐡🦈:
 
