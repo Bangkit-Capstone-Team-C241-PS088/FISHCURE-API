@@ -1,7 +1,7 @@
 # FISHCURE-API
 
 Combination of all Fishcure API before
-- [Register](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#register)
+- [Register](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#register)
 - [Login](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#login)
 - [Mengirim kode OTP ke email user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#mengirim-kode-otp-ke-email-user)
 - [Melakukan autentikasi kode OTP user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API#melakukan-autentikasi-kode-otp-user)
