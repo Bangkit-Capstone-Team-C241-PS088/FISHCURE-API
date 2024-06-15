@@ -5,9 +5,11 @@ const {
     otpAuthHandler,
     updatePasswordHandler,
     saveHistoryHandler,
-    getHistoryhandler,
-    getAllHistoryhandler,
-    solutionHandler
+    getHistoryHandler,
+    getAllHistoryHandler,
+    solutionHandler,
+    getAllArticleHandler,
+    getArticleHandler
 } = require("./handler");
 
 const routes = [
@@ -51,19 +53,31 @@ const routes = [
         // mengambil sebuah data scan dari database history
         method: 'POST',
         path: '/getHistory',
-        handler: getHistoryhandler
+        handler: getHistoryHandler
     },
     {
         // mengambil semua data scan dari database history
         method: 'POST',
         path: '/getAllHistory',
-        handler: getAllHistoryhandler
+        handler: getAllHistoryHandler
     },
     {
         // mengambil data solusi
         method: 'POST',
         path: '/solution',
         handler: solutionHandler
+    },
+    {
+        // mengambil semua data artikel
+        method: 'POST',
+        path: '/getAllArticle',
+        handler: getAllArticleHandler
+    },
+    {
+        // mengambil sebuah data artikel
+        method: 'POST',
+        path: '/getArticle',
+        handler: getArticleHandler
     }
 ];
 

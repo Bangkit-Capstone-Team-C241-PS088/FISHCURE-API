@@ -259,7 +259,7 @@ const saveHistoryHandler = async (request, h) => {
         const response = h.response({
             status: 'success',
             message: 'Data berhasil ditambahkan',
-            data: { data: data }
+            data: data
         });
 
         response.code(201);
@@ -271,7 +271,7 @@ const saveHistoryHandler = async (request, h) => {
     }
 };
 
-const getHistoryhandler = async (request, h) => {
+const getHistoryHandler = async (request, h) => {
     try {
         const { email, dateTime } = request.payload
         // example format for dateTime = 2024-05-29T11:12:15Z
@@ -289,7 +289,7 @@ const getHistoryhandler = async (request, h) => {
             const response = h.response({
                 status: 'success',
                 message: 'Data history didapatkan',
-                data: { data: data }
+                data: data
             });
 
             response.code(201);
@@ -310,7 +310,7 @@ const getHistoryhandler = async (request, h) => {
     }
 };
 
-const getAllHistoryhandler = async (request, h) => {
+const getAllHistoryHandler = async (request, h) => {
     try {
         const { email } = request.payload
 
@@ -327,7 +327,7 @@ const getAllHistoryhandler = async (request, h) => {
             const response = h.response({
                 status: 'success',
                 message: 'Data history didapatkan',
-                data: { data: data }
+                data: Object.assign({}, data)
             });
 
             response.code(201);
@@ -381,7 +381,7 @@ const solutionHandler = async (request, h) => {
             const response = h.response({
                 status: 'success',
                 message: 'Data solusi berhasil didapatkan',
-                data: { data: disease }
+                data: disease
             });
 
             response.code(201);
@@ -402,6 +402,144 @@ const solutionHandler = async (request, h) => {
     }
 };
 
+// ===
+
+const getAllArticleHandler = async (request, h) => {
+    try {
+        const { email } = request.payload
+
+        const sql = `SELECT * FROM login_info WHERE email = '${email}'`;
+        const result = await selectAQuery(sql);
+
+        if (result[0] !== undefined) {
+            const sql = `SELECT * FROM article`;
+            const result = await selectAQuery(sql);
+
+            if (result[0] !== undefined) {
+                const data = result.map(element => element);
+
+                data.forEach(element => {
+                    element.date_time = element.date_time.toISOString().slice(0, 19).replace('T', ' ');
+
+                    // Normalize specific properties
+                    function normalize(property) {
+                        let rowData = element[property];
+                        rowData = rowData.slice(1, -1);
+                        rowData = rowData.split("],[");
+                        rowData = rowData.map(item => item.trim());
+
+                        let objectConverted = {};
+                        rowData.forEach((item, index) => {
+                            objectConverted[index + 1] = item;
+                        });
+
+                        element[property] = objectConverted;
+                    }
+
+                    normalize('article');
+                });
+
+                const response = h.response({
+                    status: 'success',
+                    message: 'Data artikel didapatkan',
+                    data: Object.assign({}, data)
+                });
+
+                response.code(201);
+                return response;
+
+            }
+
+            const response = h.response({
+                status: 'failed',
+                message: 'Artikel tidak ditemukan'
+            });
+
+            response.code(401);
+            return response;
+        }
+
+        const response = h.response({
+            status: 'failed',
+            message: 'Anda belum mendaftarkan diri'
+        });
+
+        response.code(401);
+        return response;
+
+    } catch (err) {
+        console.log("Error:", err);
+        return h.response({ message: "Server error" }).code(500);
+    }
+};
+
+const getArticleHandler = async (request, h) => {
+    try {
+        const { email, idArticle } = request.payload
+
+        const sql = `SELECT * FROM login_info WHERE email = '${email}'`;
+        const result = await selectAQuery(sql);
+
+        if (result[0] !== undefined) {
+            const sql = `SELECT * FROM article WHERE id_article = ${idArticle}`;
+            const result = await selectAQuery(sql);
+
+            if (result[0] !== undefined) {
+                let data = result[0];
+
+                data.date_time = data.date_time.toISOString().slice(0, 19).replace('T', ' ');
+
+                // Normalize specific properties
+                function normalize(property) {
+                    let rowData = data[property];
+                    rowData = rowData.slice(1, -1);
+                    rowData = rowData.split("],[");
+                    rowData = rowData.map(item => item.trim());
+
+                    let objectConverted = {};
+                    rowData.forEach((item, index) => {
+                        objectConverted[index + 1] = item;
+                    });
+
+                    data[property] = objectConverted;
+                }
+
+                normalize('article');
+
+                const response = h.response({
+                    status: 'success',
+                    message: 'Data artikel didapatkan',
+                    data: data
+                });
+
+                response.code(201);
+                return response;
+
+            }
+
+            const response = h.response({
+                status: 'failed',
+                message: 'Artikel tidak ditemukan'
+            });
+
+            response.code(401);
+            return response;
+        }
+
+        const response = h.response({
+            status: 'failed',
+            message: 'Anda belum mendaftarkan diri'
+        });
+
+        response.code(401);
+        return response;
+
+    } catch (err) {
+        console.log("Error:", err);
+        return h.response({ message: "Server error" }).code(500);
+    }
+};
+
 module.exports = {
     registerUserHandler,
     loginUserHandler,
@@ -409,7 +547,9 @@ module.exports = {
     otpAuthHandler,
     updatePasswordHandler,
     saveHistoryHandler,
-    getHistoryhandler,
-    getAllHistoryhandler,
-    solutionHandler
+    getHistoryHandler,
+    getAllHistoryHandler,
+    solutionHandler,
+    getAllArticleHandler,
+    getArticleHandler
 };
