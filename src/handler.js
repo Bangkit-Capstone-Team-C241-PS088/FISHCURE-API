@@ -1,10 +1,17 @@
 require('dotenv').config();
 
+const storage = new Storage();
+const bucket = storage.bucket(bucketName);
+
 const bcrypt = require("bcrypt");
 const { nanoid } = require("nanoid");
 const nodemailer = require("nodemailer");
 const moment = require('moment-timezone');
+const bucketName = 'fishcure-history-image';
+const { Storage } = require('@google-cloud/storage');
 const { insertQuery, selectAQuery } = require("./db_query");
+
+
 
 // menuliskan data yang dikirim aplikasi ke database
 const registerUserHandler = async (request, h) => {
@@ -236,37 +243,77 @@ const updatePasswordHandler = async (request, h) => {
 
 const saveHistoryHandler = async (request, h) => {
     try {
-        const { email, disease_name, akurasi } = request.payload;
+        const { email, disease_name, akurasi, file } = request.payload;
 
-        // konversi date js ke format SQL
-        const date = new Date();
-        const jakartaMoment = moment.tz(date, "Asia/Jakarta");
-        const dateTimeSql = jakartaMoment.format('YYYY-MM-DD HH:mm:ss');
-        // const dateTimeSql = date.toISOString().slice(0, 19).replace('T', ' ');
+        const sql = `SELECT * FROM login_info WHERE email = '${email}'`;
+        const result = await selectAQuery(sql);
 
-        // deklarasi data
-        const data = {
-            email: email,
-            date_time: dateTimeSql,
-            disease_name: disease_name,
-            akurasi: akurasi
+        if (result[0] === undefined) {
+            return h.response({
+                status: 'failed',
+                message: 'Anda belum mendaftarkan diri'
+            }).code(401);
         }
 
-        // simpan data ke database
-        const sqlInsert = 'INSERT INTO history_scan SET ?';
-        await insertQuery(sqlInsert, data);
-
-        const response = h.response({
-            status: 'success',
-            message: 'Data berhasil ditambahkan',
-            data: data
+        // Handle file upload asynchronously
+        const uniqueFileName = `${nanoid()}_${file.hapi.filename}`;
+        const blob = bucket.file(uniqueFileName);
+        const blobStream = blob.createWriteStream({
+            resumable: false,
         });
 
-        response.code(201);
-        return response;
+        const finalResponse = await new Promise((resolve, reject) => {
+            blobStream.on('error', (err) => {
+                console.error('Upload error:', err.message);
+                reject(h.response({ error: `Unable to upload image. Error: ${err.message}` }).code(500));
+            });
+
+            blobStream.on('finish', async () => {
+                try {
+                    const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+
+                    // Convert date to SQL format
+                    const date = new Date();
+                    const jakartaMoment = moment.tz(date, "Asia/Jakarta");
+                    const dateTimeSql = jakartaMoment.format('YYYY-MM-DD HH:mm:ss');
+
+                    // Data to insert into database
+                    const data = {
+                        email: email,
+                        date_time: dateTimeSql,
+                        disease_name: disease_name,
+                        akurasi: akurasi,
+                        image: publicUrl
+                    };
+
+                    // Insert data into database
+                    const sqlInsert = 'INSERT INTO history_scan SET ?';
+                    await insertQuery(sqlInsert, data);
+
+                    // Response upon successful insertion
+                    const response = h.response({
+                        status: 'success',
+                        message: 'Data berhasil ditambahkan',
+                        data: data
+                    });
+
+                    response.code(201);
+                    resolve(response);
+
+                } catch (err) {
+                    console.error('Database insertion error:', err.message);
+                    reject(h.response({ error: 'Failed to insert data into database.' }).code(500));
+                }
+            });
+
+            // Pipe file data to blobStream
+            file.pipe(blobStream);
+        });
+
+        return finalResponse;
 
     } catch (err) {
-        console.log("Error:", err);
+        console.error("Error:", err);
         return h.response({ message: "Server error" }).code(500);
     }
 };
@@ -551,5 +598,6 @@ module.exports = {
     getAllHistoryHandler,
     solutionHandler,
     getAllArticleHandler,
-    getArticleHandler
+    getArticleHandler,
+    uploadImage
 };

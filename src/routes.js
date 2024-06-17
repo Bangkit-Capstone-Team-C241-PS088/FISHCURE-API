@@ -9,8 +9,10 @@ const {
     getAllHistoryHandler,
     solutionHandler,
     getAllArticleHandler,
-    getArticleHandler
+    getArticleHandler,
+    uploadImage
 } = require("./handler");
+const Joi = require('joi');
 
 const routes = [
     {
@@ -44,10 +46,25 @@ const routes = [
         handler: updatePasswordHandler
     },
     {
-        // menyimpan data scan ke database history
         method: 'POST',
         path: '/saveHistory',
-        handler: saveHistoryHandler
+        options: {
+            payload: {
+                output: 'stream',
+                parse: true,
+                allow: 'multipart/form-data',
+                multipart: {
+                    output: 'stream'
+                },
+                maxBytes: 5 * 1024 * 1024, // Maximum file size is 5MB
+            },
+            validate: {
+                payload: Joi.object({
+                    file: Joi.any().meta({ swaggerType: 'file' }).required()
+                }).unknown()
+            },
+            handler: saveHistoryHandler,
+        },
     },
     {
         // mengambil sebuah data scan dari database history

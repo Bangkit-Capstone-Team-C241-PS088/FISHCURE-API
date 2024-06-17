@@ -1,6 +1,7 @@
 # FISHCURE-API
 
 Combination of all Fishcure API before
+
 - [Register](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#register)
 - [Login](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#login)
 - [Mengirim kode OTP ke email user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#mengirim-kode-otp-ke-email-user)
@@ -357,6 +358,7 @@ request payload data :
     "email" : "[user email]",
     "desease_name" : "[nama penyakit]"
     "akurasi" : "[akurasi scan]"
+    "file" : [gambar scan user]
 }
 ```
 
@@ -373,6 +375,7 @@ request payload data :
             "date_time": "[date time scan diambil]",
             "desease_name": "[nama penyakit]",
             "akurasi": "[akurasi scan]"
+            "url": "[url gambar yang telah disimpan]"
     }
 }
 ```
@@ -409,6 +412,7 @@ request payload data :
         "date_time": "[date time scan diambil]",
         "desease_name": "[nama penyakit]",
         "akurasi": "[akurasi scan]"
+        "url": "[url gambar yang telah disimpan]"
     }
 }
 ```
@@ -454,18 +458,21 @@ request payload data :
                 "date_time": "[date time scan diambil]",
                 "desease_name": "[nama penyakit]",
                 "akurasi": "[akurasi scan]"
+                "url": "[url gambar yang telah disimpan]"
             },
             "1": {
                 "email": "[user email]",
                 "date_time": "[date time scan diambil]",
                 "desease_name": "[nama penyakit]",
                 "akurasi": "[akurasi scan]"
+                "url": "[url gambar yang telah disimpan]"
             },
             "2": {
                 "email": "[user email]",
                 "date_time": "[date time scan diambil]",
                 "desease_name": "[nama penyakit]",
                 "akurasi": "[akurasi scan]"
+                "url": "[url gambar yang telah disimpan]"
             }
     }
 }

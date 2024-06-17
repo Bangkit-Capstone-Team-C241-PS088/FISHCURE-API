@@ -128,3 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+#other thing
+credentials/fishcure-abc92cce5e1f.json
