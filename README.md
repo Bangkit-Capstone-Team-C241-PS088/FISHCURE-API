@@ -217,6 +217,55 @@ request payload data :
 }
 ```
 
+## Ujicoba koneksi - method GET
+
+url
+
+```
+/ping
+```
+
+### list response dari server :
+
+- ketika berhasil :
+
+```
+{
+    "Hello, I am alive"
+}
+```
+
+---
+
+## Pediksi Gambar Ikan
+
+url
+
+```
+/predict
+```
+
+request payload data :
+
+```
+{
+    "file" : [file gambar user]
+}
+```
+
+### list response dari server :
+
+- ketika berhasil :
+
+```
+{
+    "class": "[jenis penyakit]",
+    "confidence": [nilai akurasi]
+}
+```
+
+---
+
 ## Solution
 
 url
