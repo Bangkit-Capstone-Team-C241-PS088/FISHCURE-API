@@ -7,6 +7,8 @@ Combination of all Fishcure API before
 - [Melakukan autentikasi kode OTP user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#melakukan-autentikasi-kode-otp-user)
 - [Ganti password user](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#ganti-password-user)
 - [Solution](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#solution)
+- [Ujicoba Koneksi](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#ujicoba-koneksi---method-get)
+- [Prediksi Gambar Ikan](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#pediksi-gambar-ikan)
 - [Save History](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#save-history)
 - [Get History](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#get-history)
 - [Get All History](https://github.com/Bangkit-Capstone-Team-C241-PS088/FISHCURE-API?tab=readme-ov-file#get-all-history)
