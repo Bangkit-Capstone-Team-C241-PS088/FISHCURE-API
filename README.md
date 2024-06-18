@@ -524,7 +524,8 @@ request payload data :
             "1": "[isi artikel 1]",
             "2": "[isi artikel 2]"
             "3": "[isi artikel 3]"
-        }
+        },
+        "source": "[link sumber artikel]"
     }
 }
 ```
@@ -584,7 +585,8 @@ request payload data :
                 "1": "[isi artikel 1]",
                 "2": "[isi artikel 2]"
                 "3": "[isi artikel 3]"
-            }
+            },
+            "source": "[link sumber artikel]"
         }
         "1": {
             "id_article": [id artikel],
@@ -596,7 +598,8 @@ request payload data :
                 "1": "[isi artikel 1]",
                 "2": "[isi artikel 2]"
                 "3": "[isi artikel 3]"
-            }
+            },
+            "source": "[link sumber artikel]"
         }
     }
 }
