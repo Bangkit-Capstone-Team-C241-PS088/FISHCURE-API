@@ -1,14 +1,15 @@
 require('dotenv').config();
 
-const storage = new Storage();
-const bucket = storage.bucket(bucketName);
-
 const bcrypt = require("bcrypt");
 const { nanoid } = require("nanoid");
 const nodemailer = require("nodemailer");
 const moment = require('moment-timezone');
+
 const bucketName = 'fishcure-history-image';
 const { Storage } = require('@google-cloud/storage');
+const storage = new Storage();
+const bucket = storage.bucket(bucketName);
+
 const { insertQuery, selectAQuery } = require("./db_query");
 
 
@@ -598,6 +599,5 @@ module.exports = {
     getAllHistoryHandler,
     solutionHandler,
     getAllArticleHandler,
-    getArticleHandler,
-    uploadImage
+    getArticleHandler
 };
