@@ -356,7 +356,7 @@ request payload data :
 ```
 {
     "email" : "[user email]",
-    "desease_name" : "[nama penyakit]"
+    "disease_name" : "[nama penyakit]"
     "akurasi" : "[akurasi scan]"
     "file" : [gambar scan user]
 }
@@ -373,7 +373,7 @@ request payload data :
     "data": {
             "email": "[user email]",
             "date_time": "[date time scan diambil]",
-            "desease_name": "[nama penyakit]",
+            "disease_name": "[nama penyakit]",
             "akurasi": "[akurasi scan]"
             "url": "[url gambar yang telah disimpan]"
     }
@@ -410,7 +410,7 @@ request payload data :
     "data": {
         "email": "[user email]",
         "date_time": "[date time scan diambil]",
-        "desease_name": "[nama penyakit]",
+        "disease_name": "[nama penyakit]",
         "akurasi": "[akurasi scan]"
         "url": "[url gambar yang telah disimpan]"
     }
@@ -456,21 +456,21 @@ request payload data :
             "0": {
                 "email": "[user email]",
                 "date_time": "[date time scan diambil]",
-                "desease_name": "[nama penyakit]",
+                "disease_name": "[nama penyakit]",
                 "akurasi": "[akurasi scan]"
                 "url": "[url gambar yang telah disimpan]"
             },
             "1": {
                 "email": "[user email]",
                 "date_time": "[date time scan diambil]",
-                "desease_name": "[nama penyakit]",
+                "disease_name": "[nama penyakit]",
                 "akurasi": "[akurasi scan]"
                 "url": "[url gambar yang telah disimpan]"
             },
             "2": {
                 "email": "[user email]",
                 "date_time": "[date time scan diambil]",
-                "desease_name": "[nama penyakit]",
+                "disease_name": "[nama penyakit]",
                 "akurasi": "[akurasi scan]"
                 "url": "[url gambar yang telah disimpan]"
             }
